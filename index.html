@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed Ali</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    .glass-effect {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .gradient-text {
+        background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    
+    .animate-float {
+        animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+        100% { transform: translateY(0px); }
+    }
+    
+    .skill-icon {
+        transition: all 0.3s ease;
+    }
+    
+    .skill-icon:hover {
+        transform: scale(1.1) rotate(5deg);
+    }
+
+    .custom-shape-divider {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        line-height: 0;
+    }
+
+    .gradient-border {
+        position: relative;
+        background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+        padding: 3px;
+        border-radius: 0.5rem;
+    }
+
+    .gradient-border-content {
+        background: white;
+        border-radius: 0.3rem;
+    }
+
+    #particles-js {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+    }
+
+    /* Fade In Up Animation */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Scale In Animation */
+    @keyframes scaleIn {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    /* Slide In Left Animation */
+    @keyframes slideInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-100px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    /* Slide In Right Animation */
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(100px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    /* Rotate In Animation */
+    @keyframes rotateIn {
+        from {
+            opacity: 0;
+            transform: rotate(-180deg) scale(0.8);
+        }
+        to {
+            opacity: 1;
+            transform: rotate(0) scale(1);
+        }
+    }
+
+    /* Base classes for animations */
+    .scroll-animation {
+        opacity: 0;
+        will-change: transform, opacity;
+    }
+
+    .fade-up {
+        animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .scale-in {
+        animation: scaleIn 0.6s ease-out forwards;
+    }
+
+    .slide-left {
+        animation: slideInLeft 0.6s ease-out forwards;
+    }
+
+    .slide-right {
+        animation: slideInRight 0.6s ease-out forwards;
+    }
+
+    .rotate-in {
+        animation: rotateIn 0.8s ease-out forwards;
+    }
+
+    /* Stagger delay classes */
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+
+    /* Parallax effect */
+    .parallax-scroll {
+        transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+    }
+
+    /* Smooth section transitions */
+    .section-transition {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .section-transition::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background: linear-gradient(to bottom, transparent, rgba(17, 24, 39, 1));
+        pointer-events: none;
+    }
+
+</style>
+</head>
+<body class="bg-gray-900 text-white">
+<!-- Navigation -->
+<nav class="fixed w-full z-50 glass-effect">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+            <a href="#" class="text-2xl font-bold gradient-text">Portfolio</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-gray-300 hover:text-blue-400 transition">Home</a>
+                <a href="#about" class="text-gray-300 hover:text-blue-400 transition">About</a>
+                <a href="#skills" class="text-gray-300 hover:text-blue-400 transition">Skills</a>
+                <a href="#projects" class="text-gray-300 hover:text-blue-400 transition">Projects</a>
+                <a href="#contact" class="text-gray-300 hover:text-blue-400 transition">Contact</a>
+            </div>
+            <button class="md:hidden" onclick="toggleMenu()">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden glass-effect">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+            <a href="#home" class="block px-3 py-2 text-gray-300 hover:text-blue-400">Home</a>
+            <a href="#about" class="block px-3 py-2 text-gray-300 hover:text-blue-400">About</a>
+            <a href="#skills" class="block px-3 py-2 text-gray-300 hover:text-blue-400">Skills</a>
+            <a href="#projects" class="block px-3 py-2 text-gray-300 hover:text-blue-400">Projects</a>
+            <a href="#contact" class="block px-3 py-2 text-gray-300 hover:text-blue-400">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <div id="particles-js"></div>
+    <div class="relative z-10 text-center">
+        <h1 class="text-5xl md:text-7xl font-bold mb-4 gradient-text animate-float">Ahmed Ali</h1>
+        <div class="text-xl md:text-2xl mb-8 text-gray-300">I'm a <span id="typed-text"></span></div>
+        <a href="/path-to-your-cv.pdf" download class="inline-block glass-effect px-8 py-3 rounded-full font-semibold hover:bg-blue-600 transition transform hover:scale-105">
+            <i class="fas fa-download mr-2"></i>Download CV
+        </a>
+    </div>
+
+</section>
+
+
+<!-- About Section -->
+<section id="about" class="py-20 bg-gray-800">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-12 gradient-text">About Me</h2>
+        <div class="flex flex-col md:flex-row items-center gap-8">
+            <div class="md:w-1/2 relative">
+                <div class="gradient-border">
+                    <img src="/h.JPG" alt="Profile" class="rounded-lg w-full h-[50%] gradient-border-content">
+                </div>
+                <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-blue-500 rounded-full opacity-20 blur-xl"></div>
+            </div>
+            <div class="md:w-1/2">
+                <div class="space-y-4">
+                    <p class="text-gray-300 leading-relaxed text-lg">
+                        Dynamic and versatile ICT and ERP professional with expertise in cybersecurity, network administration, and technical support. My journey began while managing a mobile phone store and studying Computer Science at the University of Technology, specializing in Cybersecurity. I have since gained significant experience through roles at renowned organizations like Earthlink and Alrida for Investment.
+                    </p>
+
+                    <p class="text-gray-300 leading-relaxed text-lg">
+                        I bring in-depth knowledge of configuring network devices (MikroTik, Ubiquiti, Mimosa), monitoring tools (Zabbix, RouteThis), and ERP systems, particularly SAP S/4HANA (GUI, FIORI, C4C). My technical toolkit includes programming languages (HTML, Tailwind CSS, JavaScript, Python) and database management (MS SQL).                    </p>
+
+                    <p class="text-gray-300 leading-relaxed text-lg">
+
+                        I’ve successfully delivered innovative solutions, including queue management systems, customer service platforms, and data analysis tools. Currently, I’m leading an HRMS implementation across multiple companies using SAP SuccessFactors, ensuring alignment with business goals.                    </p>
+
+                    <p class="text-gray-300 leading-relaxed text-lg">
+
+                        Passionate about leveraging technology to optimize business processes and deliver impactful results, I excel in analytical thinking, communication, and project management, backed by proficiency in MS Office tools.                        
+                        
+                        
+                        <div class="flex flex-wrap gap-4 pt-4">
+                        <div class="glass-effect px-4 py-2 rounded-full text-sm">
+                            <i class="fas fa-code text-green-400 mr-2"></i>Front-End Developer
+                        </div>
+                        <div class="glass-effect px-4 py-2 rounded-full text-sm">
+                            <i class="fas fa-fingerprint text-green-400 mr-2"></i>Biometric Systems
+                        </div>
+                        <div class="glass-effect px-4 py-2 rounded-full text-sm">
+                            <i class="fas fa-server text-green-400 mr-2"></i>SAP Expert
+                        </div>
+                        <div class="glass-effect px-4 py-2 rounded-full text-sm">
+                            <i class="fas fa-wifi text-green-400 mr-2"></i>Network Device Configuration
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 flex gap-6">
+                    <a href="#" class="text-gray-300 hover:text-blue-400 transition transform hover:scale-110">
+                        <i class="fab fa-linkedin text-3xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-300 hover:text-blue-400 transition transform hover:scale-110">
+                        <i class="fab fa-github text-3xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-300 hover:text-blue-400 transition transform hover:scale-110">
+                        <i class="fab fa-twitter text-3xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="py-20 bg-gray-900 relative">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Skills & Experience</h2>
+        
+        <!-- Technical Skills -->
+        <div class="mb-16">
+            <h3 class="text-2xl font-bold mb-8 text-blue-400"><i class="fas fa-code mr-3"></i>Technical Skills</h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Programming Languages -->
+                <div class="skill-card glass-effect p-6 rounded-xl text-center transform hover:scale-105 transition">
+                    <i class="fab fa-html5 text-5xl mb-4 text-orange-500 skill-icon"></i>
+                    <h3 class="font-semibold mb-2">HTML5</h3>
+                    <div class="w-full bg-gray-700 rounded-full">
+                        <div class="w-11/12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full h-2"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card glass-effect p-6 rounded-xl text-center transform hover:scale-105 transition">
+                    <i class="fab fa-css3-alt text-5xl mb-4 text-blue-500 skill-icon"></i>
+                    <h3 class="font-semibold mb-2">CSS3</h3>
+                    <div class="w-full bg-gray-700 rounded-full">
+                        <div class="w-11/12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full h-2"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card glass-effect p-6 rounded-xl text-center transform hover:scale-105 transition">
+                    <i class="fab fa-js text-5xl mb-4 text-yellow-400 skill-icon"></i>
+                    <h3 class="font-semibold mb-2">JavaScript</h3>
+                    <div class="w-full bg-gray-700 rounded-full">
+                        <div class="w-10/12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full h-2"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card glass-effect p-6 rounded-xl text-center transform hover:scale-105 transition">
+                    <i class="fab fa-python text-5xl mb-4 text-blue-400 skill-icon"></i>
+                    <h3 class="font-semibold mb-2">Python</h3>
+                    <div class="w-full bg-gray-700 rounded-full">
+                        <div class="w-9/12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full h-2"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card glass-effect p-6 rounded-xl text-center transform hover:scale-105 transition">
+                    <i class="fas fa-wind text-5xl mb-4 text-teal-500 skill-icon"></i>
+                    <h3 class="font-semibold mb-2">Tailwind CSS</h3>
+                    <div class="w-full bg-gray-700 rounded-full">
+                        <div class="w-10/12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full h-2"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card glass-effect p-6 rounded-xl text-center transform hover:scale-105 transition">
+                    <i class="fas fa-database text-5xl mb-4 text-red-500 skill-icon"></i>
+                    <h3 class="font-semibold mb-2">MS SQL</h3>
+                    <div class="w-full bg-gray-700 rounded-full">
+                        <div class="w-9/12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full h-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Professional Experience -->
+        <div class="mb-16">
+            <h3 class="text-2xl font-bold mb-8 text-blue-400"><i class="fas fa-briefcase mr-3"></i>Professional Experience</h3>
+            
+            <!-- SAP Experience -->
+            <div class="glass-effect p-6 rounded-xl mb-8 transform hover:scale-102 transition">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-server text-3xl text-purple-500 mr-4"></i>
+                    <h4 class="text-xl font-bold">Alrida Investment Company</h4>
+                </div>
+                <p class="text-gray-300 mb-4">ERP Administrator - SAP S4 HANA</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                    <div class="bg-gray-800 p-3 rounded-lg">
+                        <i class="fas fa-desktop mr-2 text-blue-400"></i> SAP GUI
+                    </div>
+                    <div class="bg-gray-800 p-3 rounded-lg">
+                        <i class="fas fa-layer-group mr-2 text-blue-400"></i> SAP Fiori
+                    </div>
+                    <div class="bg-gray-800 p-3 rounded-lg">
+                        <i class="fas fa-users-cog mr-2 text-blue-400"></i> C4C
+                    </div>
+                </div>
+                <div class="text-gray-400">
+                    <p>• ERP & IT Systems:     </p>
+                    <p>• Experienced in SAP S/4HANA administration, including GUI, Fiori, and C4C.</p>
+                    <p>• Extensive knowledge of HRMS implementation using SAP SuccessFactors.</p>
+                    <p>• Skilled in report generation, user training, and managing permissions. </p>
+                    <p>• Course in preparing and installing fingerprint devices ZKTeco</p>
+
+                </div>
+            </div>
+
+            <!-- Technical Support Experience -->
+            <div class="glass-effect p-6 rounded-xl mb-8 transform hover:scale-102 transition">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-network-wired text-3xl text-green-500 mr-4"></i>
+                    <h4 class="text-xl font-bold">Earthlink</h4>
+                </div>
+                <p class="text-gray-300 mb-4">Technical Support Engineer & Quality Analyst</p>
+                <div class="text-gray-400">
+                    <p>• Quality Analyst and technical support</p>
+                    <p>•	Networking & Systems:</p>
+                    <p>•	Deep expertise in MikroTik, UBNT (AirFiber), Mimosa devices configuration.</p>
+                    <p>	•	Proficient in monitoring and diagnostic tools like Zabbix, Winbox, and RouteThis.</p>
+                </div>
+            </div>
+
+            <!-- Insurance Experience -->
+            <div class="glass-effect p-6 rounded-xl transform hover:scale-102 transition">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-car text-3xl text-blue-500 mr-4"></i>
+                    <h4 class="text-xl font-bold">National Insurance Company</h4>
+                </div>
+                <p class="text-gray-300 mb-4">Operations Manager</p>
+                <div class="text-gray-400">
+                    <p>• Managed vehicle entry operations and documentation</p>
+                    <p>• Inventory management and reconciliation</p>
+                    <p>• Process optimization and compliance</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Skills -->
+        <div>
+            <h3 class="text-2xl font-bold mb-8 text-blue-400"><i class="fas fa-plus-circle mr-3"></i>Additional Skills</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="glass-effect p-4 rounded-lg text-center">
+                    <i class="fas fa-project-diagram text-3xl mb-2 text-green-400"></i>
+                    <p>Project Management</p>
+                </div>
+                <div class="glass-effect p-4 rounded-lg text-center">
+                    <i class="fas fa-users text-3xl mb-2 text-yellow-400"></i>
+                    <p>Staff training</p>
+                </div>
+                <div class="glass-effect p-4 rounded-lg text-center">
+                    <i class="fas fa-tasks text-3xl mb-2 text-purple-400"></i>
+                    <p>Process Optimization</p>
+                </div>
+                <div class="glass-effect p-4 rounded-lg text-center">
+                    <i class="fas fa-graduation-cap text-3xl mb-2 text-blue-400"></i>
+                    <p>Training & Development</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="py-20 bg-gray-800">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Projects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                                                <!-- Add more project cards with similar structure -->
+
+                                                <div class="project-card glass-effect rounded-xl overflow-hidden transform hover:scale-105 transition duration-300">
+                                                    <div class="relative group swiper-container">
+                                                        <!-- Swiper Wrapper -->
+                                                        <div class="swiper-wrapper">
+                                                            <div class="swiper-slide">
+                                                                <img src="p1.png" alt="Project Image 1" class="w-full h-60 object-cover">
+                                                            </div>
+                                                            <div class="swiper-slide">
+                                                                <img src="/Screenshot 2024-12-15 at 1.39.08 PM.png" alt="Project Image 2" class="w-full h-60 object-cover">
+                                                            </div>
+                                    
+                                                        </div>
+                                                        <!-- Navigation Buttons -->
+                                                        <!-- <div class="swiper-button-next"></div>
+                                                        <div class="swiper-button-prev"></div> -->
+                                                        <!-- Pagination -->
+                                                        <div class="swiper-pagination"></div>
+                                                    </div>
+                                                    <div class="p-6">
+                                                        <h3 class="font-bold text-xl mb-2"> Check List </h3>
+                                                        <p class="text-gray-400 mb-4">This page is responsible for general problems that
+                                                             the user faces with the solution. There are also statistics for it.</p>
+                                                        <!-- <div class="flex gap-4">
+                                                            <a href="#" class="text-blue-400 hover:text-blue-300 transition">
+                                                                <i class="fas fa-external-link-alt mr-2"></i>Demo
+                                                            </a>
+                                                            <a href="#" class="text-blue-400 hover:text-blue-300 transition">
+                                                                <i class="fab fa-github mr-2"></i>GitHub
+                                                            </a>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+
+            <!-- Add more project cards with similar structure -->
+
+            <div class="project-card glass-effect rounded-xl overflow-hidden transform hover:scale-105 transition duration-300">
+                <div class="relative group">
+                    <img src="/p2.png" alt="Project 1" class="w-full h-60 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-0 group-hover:opacity-70 transition"></div>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-bold text-xl mb-2">CS WhiteBoard </h3>
+                    <p class="text-gray-400 mb-4">This page is responsible for instructions, guidelines and notifications
+                         for customer service and call center employees.</p>
+                    <!-- <div class="flex gap-4">
+                        <a href="#" class="text-blue-400 hover:text-blue-300 transition">
+                            <i class="fas fa-external-link-alt mr-2"></i>Demo
+                        </a>
+                        <a href="#" class="text-blue-400 hover:text-blue-300 transition">
+                            <i class="fab fa-github mr-2"></i>GitHub
+                        </a>
+                    </div> -->
+                </div>
+            </div>
+
+                        <!-- Add more project cards with similar structure -->
+
+
+                                          <div class="project-card glass-effect rounded-xl overflow-hidden transform hover:scale-105 transition duration-300">
+                                            <div class="relative group swiper-container">
+                                                <!-- Swiper Wrapper -->
+                                                <div class="swiper-wrapper">
+                                                    <div class="swiper-slide">
+                                                        <img src="p3.png" alt="Project Image 1" class="w-full h-60 object-cover">
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <img src="/s.png" alt="Project Image 2" class="w-full h-60 object-cover">
+                                                    </div>
+                            
+                                                </div>
+                                                <!-- Navigation Buttons
+                                                <div class="swiper-button-next"></div>
+                                                <div class="swiper-button-prev"></div> -->
+                                                <!-- Pagination -->
+                                                <div class="swiper-pagination"></div>
+                                            </div>
+                                            <div class="p-6">
+                                                <h3 class="font-bold text-xl mb-2">  Queue System</h3>
+                                                <p class="text-gray-400 mb-4">This system is for managing queues, where the customer enters information according to the required department to be dealt with in the
+                                                     employee panel, where the entered information appears on the employee’s screen with the ability to display reports.</p>
+                                                <!-- <div class="flex gap-4">
+                                                    <a href="#" class="text-blue-400 hover:text-blue-300 transition">
+                                                        <i class="fas fa-external-link-alt mr-2"></i>Demo
+                                                    </a>
+                                                    <a href="#" class="text-blue-400 hover:text-blue-300 transition">
+                                                        <i class="fab fa-github mr-2"></i>GitHub
+                                                    </a>
+                                                </div> -->
+                                            </div>
+                                        </div>
+
+                                    <!-- Add more project cards with similar structure -->
+
+            <div class="project-card glass-effect rounded-xl overflow-hidden transform hover:scale-105 transition duration-300">
+                <div class="relative group">
+                    <img src="/p4.png" alt="Project 1" class="w-full h-60 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-0 group-hover:opacity-70 transition"></div>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-bold text-xl mb-2">PDF Compressor</h3>
+                    <p class="text-gray-400 mb-4">It was programmed using Python language, where the preference in data analysis is
+                         done through this page, compressing pdf with optimization</p>
+                    <!-- <div class="flex gap-4">
+                        <a href="#" class="text-blue-400 hover:text-blue-300 transition">
+                            <i class="fas fa-external-link-alt mr-2"></i>Demo
+                        </a>
+                        <a href="#" class="text-blue-400 hover:text-blue-300 transition">
+                            <i class="fab fa-github mr-2"></i>GitHub
+                        </a>
+                    </div> -->
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</section>
+
+
+<section id="contact" class="py-20 bg-gray-900 relative">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Contact Me</h2>
+        <div class="max-w-lg mx-auto">
+            <form id="contact-form" class="space-y-6 glass-effect p-8 rounded-xl">
+                <div>
+                    <label class="block text-gray-300 mb-2" for="from_name">Name</label>
+                    <input type="text" id="from_name" name="from_name" class="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:border-blue-500 text-white" required>
+                </div>
+                <div>
+                    <label class="block text-gray-300 mb-2" for="from_email">Email</label>
+                    <input type="email" id="from_email" name="from_email" class="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:border-blue-500 text-white" required>
+                </div>
+                <div>
+                    <label class="block text-gray-300 mb-2" for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:border-blue-500 text-white" required></textarea>
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-2 px-4 rounded-lg hover:opacity-90 transition transform hover:scale-105">
+                    Send Message
+                </button>
+            </form>
+            <p id="success-message" class="text-green-400 text-center mt-4 hidden">Message sent successfully!</p>
+            <p id="error-message" class="text-red-400 text-center mt-4 hidden">Failed to send the message. Please try again.</p>
+        </div>
+    </div>
+</section>
+
+<!-- تضمين مكتبة EmailJS -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+    // تهيئة EmailJS
+    (function() {
+        emailjs.init("HBGr9lxKjCyPBiJkQ"); // استبدل بـ Public Key الخاص بك من EmailJS
+    })();
+
+    // إضافة حدث الإرسال للنموذج
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const serviceID = "service_bcc8ra7"; // Service ID من EmailJS
+        const templateID = "template_ej762zn"; // Template ID من EmailJS
+
+        emailjs.sendForm(serviceID, templateID, this)
+            .then(() => {
+                // في حالة النجاح
+                document.getElementById("success-message").classList.remove("hidden");
+                document.getElementById("error-message").classList.add("hidden");
+                document.getElementById("contact-form").reset();
+            }, (err) => {
+                // في حالة الفشل
+                document.getElementById("error-message").classList.remove("hidden");
+                document.getElementById("success-message").classList.add("hidden");
+                console.error("Error:", err);
+            });
+    });
+</script>
+
+<!-- Previous code remains the same until footer section -->
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <footer class="bg-gradient-to-r from-gray-900 to-gray-800 text-white py-12 relative overflow-hidden">
+            <!-- Background Decoration -->
+            <div class="absolute top-0 left-0 w-full h-full opacity-5">
+                <div class="absolute top-0 left-1/4 w-64 h-64 bg-blue-400 rounded-full filter blur-3xl"></div>
+                <div class="absolute bottom-0 right-1/4 w-64 h-64 bg-purple-400 rounded-full filter blur-3xl"></div>
+            </div>
+        
+            <div class="container mx-auto px-4 relative z-10">
+                <!-- Main Content -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                    <!-- Phone Section -->
+                    <div class="text-center md:text-right space-y-2">
+                        <h4 class="font-bold text-xl bg-gradient-to-r from-blue-400 to-purple-400 inline-block text-transparent bg-clip-text">
+                            Let's Talk
+                        </h4>
+                        <p class="text-gray-300">
+                            <a href="tel:+9647744221400" 
+                               class="hover:text-blue-400 transition-all duration-300 ease-in-out inline-block hover:-translate-y-1">
+                                +964 7744221400 
+                            </a>
+                        </p>
+                    </div>
+        
+                    <!-- Brand Section -->
+                    <div class="text-center space-y-3">
+                        <h3 class="text-3xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 inline-block text-transparent bg-clip-text">
+                            Ahmed Ali
+                        </h3>
+                        <p class="text-gray-300 font-light">Web Developer & Designer</p>
+                        <div class="h-1 w-20 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full"></div>
+                    </div>
+        
+                    <!-- Email Section -->
+                    <div class="text-center md:text-left space-y-2">
+                        <h4 class="font-bold text-xl bg-gradient-to-r from-purple-400 to-pink-400 inline-block text-transparent bg-clip-text">
+                            Email Me
+                        </h4>
+                        <p class="text-gray-300">
+                            <a href="mailto:dd61fe@gmail.com" 
+                               class="hover:text-purple-400 transition-all duration-300 ease-in-out inline-block hover:-translate-y-1">
+                                dd61fe@gmail.com
+                            </a>
+                        </p>
+                    </div>
+                </div>
+        
+<!-- Social Links -->
+<div class="flex justify-center space-x-8 mb-12">
+    <a href="https://www.linkedin.com/in/ahmed-ali-38800a2a9/" 
+       class="group p-3 bg-gray-800 rounded-full hover:bg-gray-700 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg"
+       target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-linkedin text-xl group-hover:text-blue-400 transition-colors duration-300"></i>
+    </a>
+    
+    <a href="https://www.instagram.com/a5h4m/" 
+       class="group p-3 bg-gray-800 rounded-full hover:bg-gray-700 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg"
+       target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-instagram text-xl group-hover:text-blue-400 transition-colors duration-300"></i>
+    </a>
+
+    <a href="https://www.facebook.com/profile.php?id=100007636571015" 
+       class="group p-3 bg-gray-800 rounded-full hover:bg-gray-700 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg"
+       target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-facebook text-xl group-hover:text-blue-400 transition-colors duration-300"></i>
+    </a>
+</div>
+        
+                <!-- Copyright -->
+                <div class="text-center">
+                    <p class="text-gray-400 text-sm">
+                        &copy; <script>document.write(new Date().getFullYear())</script> Ahmed Ali. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+
+    <script src="main.js"></script>
+</body>
+</html>
+
